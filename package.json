@@ -27,11 +27,13 @@
   ],
   "homepage": "https://github.com/bustlelabs/mobiledoc-facebook-instant-renderer",
   "devDependencies": {
-    "broccoli": "^0.16.8",
-    "broccoli-merge-trees": "^0.2.1",
-    "broccoli-multi-builder": "^0.2.6",
-    "broccoli-test-builder": "^0.2.0",
-    "testem": "^0.9.0-1"
+    "babel-eslint": "^7.2.3",
+    "broccoli": "1.1.2",
+    "broccoli-merge-trees": "^2.0.0",
+    "broccoli-multi-builder": "^0.3.0",
+    "broccoli-test-builder": "^0.4.0",
+    "simple-dom": "^1.1.1",
+    "testem": "^1.18.3"
   },
   "dependencies": {
     "mobiledoc-dom-renderer": "^0.6.5"
