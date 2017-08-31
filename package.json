@@ -1,6 +1,6 @@
 {
   "name": "@bustle/mobiledoc-facebook-instant-renderer",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Renders mobiledoc input to Facebook Instant output",
   "main": "dist/commonjs/mobiledoc-facebook-instant-renderer/index.js",
   "scripts": {
