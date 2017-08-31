@@ -71,3 +71,15 @@ export function createSimpleMobiledoc(
     ]
   };
 }
+
+export function createMobiledocWithEmptyParagraph({ version = MOBILEDOC_VERSION } = {}) {
+  return {
+    version,
+    atoms: [],
+    cards: [],
+    markups: [],
+    sections: [
+      [1, 'p', []]
+    ]
+  };
+}

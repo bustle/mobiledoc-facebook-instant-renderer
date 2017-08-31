@@ -4,7 +4,8 @@ import ImageCard from 'mobiledoc-facebook-instant-renderer/cards/image';
 import {
   createBlankMobiledoc,
   createSimpleMobiledoc,
-  createMobiledocWithCard
+  createMobiledocWithCard,
+  createMobiledocWithEmptyParagraph
 } from '../helpers/create-mobiledoc';
 
 const { test, module } = QUnit;
@@ -62,4 +63,10 @@ test('renders a mobiledoc with built-in image card', (assert) => {
   let mobiledoc = createMobiledocWithCard({card});
   let html = renderToHTML(mobiledoc, {cards: [ImageCard]});
   assert.equal(html, `<figure><img src="${dataUri}"></figure>`);
+});
+
+test('empty paragraphs are skipped', (assert) => {
+  let mobiledoc = createMobiledocWithEmptyParagraph();
+  let html = renderToHTML(mobiledoc);
+  assert.ok(!html.includes('<p></p>'));
 });
