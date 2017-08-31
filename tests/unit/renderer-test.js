@@ -25,6 +25,16 @@ function renderToHTML(mobiledoc, options={}) {
   return serializeToHTML(render(mobiledoc, options));
 }
 
+module('Unit: Mobiledoc Facebook Instant Renderer - 0.2');
+
+test('version 0.2.0 is not supported', (assert) => {
+  const mockMobiledoc = { version: '0.2.0' };
+  assert.throws(
+    () => render(mockMobiledoc),
+    /Unsupported mobiledoc version.*0\.2\.0/i
+  );
+});
+
 module('Unit: Mobiledoc Facebook Instant Renderer - 0.3');
 
 test('blank mobiledoc', (assert) => {
