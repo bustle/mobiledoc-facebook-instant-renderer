@@ -4,7 +4,8 @@ import ImageCard from 'mobiledoc-facebook-instant-renderer/cards/image';
 import {
   createBlankMobiledoc,
   createSimpleMobiledoc,
-  createMobiledocWithCard
+  createMobiledocWithCard,
+  createMobiledocWithEmptyParagraph
 } from '../helpers/create-mobiledoc';
 
 const { test, module } = QUnit;
@@ -24,6 +25,16 @@ function serializeToHTML(dom) {
 function renderToHTML(mobiledoc, options={}) {
   return serializeToHTML(render(mobiledoc, options));
 }
+
+module('Unit: Mobiledoc Facebook Instant Renderer - 0.2');
+
+test('version 0.2.0 is not supported', (assert) => {
+  const mockMobiledoc = { version: '0.2.0' };
+  assert.throws(
+    () => render(mockMobiledoc),
+    /Unsupported mobiledoc version.*0\.2\.0/i
+  );
+});
 
 module('Unit: Mobiledoc Facebook Instant Renderer - 0.3');
 
@@ -52,4 +63,10 @@ test('renders a mobiledoc with built-in image card', (assert) => {
   let mobiledoc = createMobiledocWithCard({card});
   let html = renderToHTML(mobiledoc, {cards: [ImageCard]});
   assert.equal(html, `<figure><img src="${dataUri}"></figure>`);
+});
+
+test('empty paragraphs are skipped', (assert) => {
+  let mobiledoc = createMobiledocWithEmptyParagraph();
+  let html = renderToHTML(mobiledoc);
+  assert.ok(!html.includes('<p></p>'));
 });
